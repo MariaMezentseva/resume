@@ -21,20 +21,20 @@ jobs:
       - name: Checkout resume branch
         uses: actions/checkout@v2
         with:
-          ref: resume
+          ref: resume_view
           fetch-depth: 0
       
       - name: Copy main.pdf to resume branch
         run: |
-          mkdir -p resume
-          cp main.pdf resume
+          mkdir -p resume_view
+          cp main.pdf resume_view
         working-directory: ${{ github.workspace }}
         
       - name: Commit and push changes
         uses: EndBug/add-and-commit@v7.0.0
         with:
-          message: 'Publish main.pdf to resume branch'
-          add: './resume/main.pdf'
+          message: 'Publish main.pdf to resume_view branch'
+          add: './resume_view/main.pdf'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
