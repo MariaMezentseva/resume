@@ -20,7 +20,7 @@ jobs:
     - name: Pull
       run: |
         git config pull.rebase false
-        git pull main resume
+        git pull origin resume
         
     - name: Push output file to resume branch
       uses: ad-m/github-push-action@master
