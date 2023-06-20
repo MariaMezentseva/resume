@@ -19,7 +19,7 @@ jobs:
         path: ./main.pdf
     - name: Pull
       run: |
-        git pull origin master
+        git pull origin main
         
     - name: Push output file to resume branch
       uses: ad-m/github-push-action@master
