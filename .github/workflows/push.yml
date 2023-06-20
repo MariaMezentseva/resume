@@ -19,7 +19,7 @@ jobs:
         path: ./main.pdf
 
     - name: Push output file to resume branch
-      uses: ad-m/MezentsevaMaria@master
+      uses: ad-m/MariaMezentseva@master
 
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
