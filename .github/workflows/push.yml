@@ -21,6 +21,7 @@ jobs:
       run: |
         git config pull.rebase false
         git pull origin main
+        git push resume
         
     - name: Publish PDF to Github
       uses: actions/upload-artifact@v2
