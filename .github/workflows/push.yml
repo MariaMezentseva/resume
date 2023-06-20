@@ -25,19 +25,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: resume
         directory: ./
-    - name: Download repository changes
-      uses: actions/checkout@v2
-      with:
-        ref: resume
-        fetch-depth: 0
-
-    - name: Verify file changes
-      run: |
-        if git diff --name-only HEAD^ HEAD | grep -q 'main.pdf'; then
-          echo "File main.pdf changed. Committing changes..."
-          git commit -m 'Updated main.pdf'
-          git push
-        else
-          echo "File main.pdf did not change."
-        fi
 
