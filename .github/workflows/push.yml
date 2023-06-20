@@ -12,12 +12,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Publish PDF to Github
-      uses: actions/upload-artifact@v2
-      with:
-        name: main.pdf
-        path: ./main.pdf
-
     - name: Push output file to resume branch
       uses: ad-m/github-push-action@master
       with:
