@@ -1,0 +1,26 @@
+name: Build and Generate PDF
+
+# Triggers the workflow when a new commit is pushed to the repository
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: fedora:33
+
+    # You can replace ubuntu-latest with fedora:33 if you prefer to use the Fedora container
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker
+        uses: docker/setup-docker@v1
+
+      - name: Build Docker image
+        run: docker build -t my-image .
+
+      - name: Generate PDF
+        run: docker run --rm -v $(pwd):/app my-image pdflatex -interaction=nonstopmode ./app/main.tex

@@ -1,0 +1,25 @@
+# Название вашей action и параметры входа
+name: LaTeX Builder
+description: Сборка LaTeX-документа.
+inputs:
+  folder:
+    description: Путь к каталогу, в котором находятся файлы проекта.
+    required: true
+  main_file:
+    description: Имя главного файла LaTeX проекта.
+    required: true
+
+# Определение, как будет работать Action
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  entrypoint: bash
+
+# Команда, которая будет выполняться
+command: |
+  pdflatex -interaction=nonstopmode ${{inputs.main_file}} && \
+  bibtex ${{inputs.main_file}} && \
+  pdflatex -interaction=nonstopmode ${{inputs.main_file}} && \
+  pdflatex -interaction=nonstopmode ${{inputs.main_file}} && \
+  chown $(id -u):$(id -g) ${{inputs.main_file}}.pdf && \
+  mv ${{inputs.main_file}}.pdf ${{inputs.folder}}
