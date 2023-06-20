@@ -12,28 +12,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Clear old PDF file if exists
-      run: |
-        rm -f resume_*.pdf
-
-    - name: Create unique PDF file name
-      run: |
-        date=$(date '+%Y-%m-%d-%H:%M:%S')
-
-
-    - name: Rename PDF file
-      run: mv main.pdf $PDF_FILE_NAME
-
     - name: Publish PDF to Github
       uses: actions/upload-artifact@v2
       with:
-        name: $PDF_FILE_NAME
-        path: ./$PDF_FILE_NAME
+        name: main.pdf
+        path: ./main.pdf
 
     - name: Push output file to resume branch
       uses: ad-m/github-push-action@master
+
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: resume
         directory: ./
-
