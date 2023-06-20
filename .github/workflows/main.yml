@@ -10,8 +10,6 @@ jobs:
   build:
     runs-on: fedora:33
 
-    # You can replace ubuntu-latest with fedora:33 if you prefer to use the Fedora container
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -20,7 +18,7 @@ jobs:
         uses: docker/setup-docker@v1
 
       - name: Build Docker image
-        run: docker build -t my-image .
+        run: docker build --tag my_tag -f Dockerfile .
 
       - name: Generate PDF
-        run: docker run --rm -v $(pwd):/app my-image pdflatex -interaction=nonstopmode ./app/main.tex
+        run: docker run -it my_tag /bin/bash
