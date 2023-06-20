@@ -19,6 +19,7 @@ jobs:
         path: ./main.pdf
     - name: Pull
       run: |
+        git config pull.rebase false
         git pull origin resume
         
     - name: Push output file to resume branch
