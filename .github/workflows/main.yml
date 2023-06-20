@@ -3,7 +3,9 @@ name: Build and Generate PDF
 # Triggers the workflow when a new commit is pushed to the repository
 on:
   push:
-    branches:
+   paths-ignore:
+   - '.github/workflows'
+   branches:
       - main
 
 jobs:
