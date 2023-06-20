@@ -18,10 +18,10 @@ jobs:
         name: main.pdf
         path: ./main.pdf
 
-    - name: Push output file to pdf-output branch
+    - name: Push output file to resume branch
       uses: actions/main@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: pdf-output
+        branch: resume
         directory: ./
 
