@@ -18,8 +18,8 @@ jobs:
 
     - name: Create unique PDF file name
       run: |
-        printf -v date '%(%Y-%m-%d-%H%M%S)T' -1
-        PDF_FILE_NAME="resume_${date}.pdf"
+        date=$(date '+%Y-%m-%d-%H:%M:%S')
+
 
     - name: Rename PDF file
       run: mv main.pdf $PDF_FILE_NAME
