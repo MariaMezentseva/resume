@@ -1,4 +1,4 @@
-name: Build and Publish PDF
+name: Publish PDF
 
 on:
   push:
@@ -12,17 +12,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Build Docker image
-      run: docker build --tag my_tag -f Dockerfile .
-
-    - name: Generate PDF
-      run: docker run my_tag /bin/sh -c "[ -e /bin/bash ] && /bin/bash || /bin/sh"
-
     - name: Publish PDF to Github
       uses: actions/upload-artifact@v2
       with:
-        name: output.pdf
-        path: ./output.pdf
+        name: main.pdf
+        path: ./main.pdf
 
     - name: Push output file to pdf-output branch
       uses: ad-m/github-push-action@master
