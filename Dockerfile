@@ -16,9 +16,9 @@ RUN yum -y install texlive-raleway
 WORKDIR app/
 COPY Minimal-CV/icons icons
 COPY Minimal-CV/images app/images
-COPY Minimal-CV/images/image.tex app/images/image.tex
-COPY Minimal-CV/images/IMG_3544.png images/IMG_3544.png
-COPY Minimal-CV/images/image.tex images/image.tex
+# COPY Minimal-CV/images/image.tex app/images/image.tex
+# COPY Minimal-CV/images/IMG_3544.png images/IMG_3544.png
+# COPY Minimal-CV/images/image.tex images/image.tex
 COPY Minimal-CV/flags flags
 COPY Minimal-CV/main.tex app/main.tex
 COPY build.sh app/build.sh
