@@ -21,4 +21,4 @@ jobs:
         run: docker build --tag my_tag -f Dockerfile .
 
       - name: Generate PDF
-        run: docker run -it my_tag /bin/bash
+        run: docker run my_tag /bin/sh -c "[ -e /bin/bash ] && /bin/bash || /bin/sh"
