@@ -9,19 +9,31 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Publish PDF to Github
-      uses: actions/upload-artifact@v2
-      with:
-        name: main.pdf
-        path: ./main.pdf
-
-    - name: Push output file to pdf-output branch
-      uses: actions/main@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: pdf-output
-        directory: ./
-
+      - name: Publish PDF to Github
+        uses: actions/upload-artifact@v2
+        with:
+          name: main.pdf
+          path: ./main.pdf
+      
+      - name: Checkout resume branch
+        uses: actions/checkout@v2
+        with:
+          ref: resume_view
+          fetch-depth: 0
+      
+      - name: Copy main.pdf to resume branch
+        run: |
+          mkdir -p resume_view
+          cp main.pdf resume_view
+        working-directory: ${{ github.workspace }}
+        
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v7.0.0
+        with:
+          message: 'Publish main.pdf to resume_view branch'
+          add: './resume_view/main.pdf'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
