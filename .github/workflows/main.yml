@@ -14,8 +14,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Docker
-        uses: /main/@v1
+#       - name: Set up Docker
+#         uses: /main/@v1
 
       - name: Build Docker image
         run: docker build --tag my_tag -f Dockerfile .
