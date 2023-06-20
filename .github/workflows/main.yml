@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: fedora:33
+    runs-on: fedora-latest
 
     steps:
       - name: Checkout code
