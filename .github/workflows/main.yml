@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Docker
-        uses: resume/@v1
+        uses: main/@v1
 
       - name: Build Docker image
         run: docker build --tag my_tag -f Dockerfile .
