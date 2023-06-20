@@ -16,7 +16,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: main.pdf
-        path: ./main.pdf
+        path: ./resume/main.pdf
     - name: Pull
       run: |
         git config pull.rebase false
